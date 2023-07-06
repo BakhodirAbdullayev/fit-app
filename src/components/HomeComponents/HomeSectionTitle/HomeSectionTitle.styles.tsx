@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { responsive } from "../../styles/responsive";
+import { responsive } from "../../../styles/responsive";
 import {
   darkWhite,
   lightGray,
   lightLime,
   lightWhite,
-} from "../../styles/variables";
+} from "../../../styles/variables";
 
 export const Container = styled.div`
   width: 100%;

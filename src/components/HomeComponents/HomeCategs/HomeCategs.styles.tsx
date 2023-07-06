@@ -1,11 +1,11 @@
 import styled from "styled-components";
-import { responsive } from "../../styles/responsive";
+import { responsive } from "../../../styles/responsive";
 import {
   darkBlack,
   darkLime,
   darkWhite,
   lightBlack,
-} from "../../styles/variables";
+} from "../../../styles/variables";
 
 export const Container = styled.div`
   width: 100%;

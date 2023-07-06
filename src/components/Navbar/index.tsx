@@ -1,6 +1,7 @@
 import React from "react";
 import { Container, Link } from "./Navbar.styles";
 import { NavbarProps } from "./Navbar.types";
+import { routesData } from "../../utils/Routes.data";
 
 const Navbar = ({ toggle, handleToggleClick }: NavbarProps) => {
   return (
@@ -9,10 +10,11 @@ const Navbar = ({ toggle, handleToggleClick }: NavbarProps) => {
       toggle={toggle}
       onClick={handleToggleClick && handleToggleClick}
     >
-      <Link to="/">Home</Link>
-      <Link to="/clubs">Clubs</Link>
-      <Link to="/blog">Blog</Link>
-      <Link to="/contact">Contact</Link>
+      {routesData.map((r, i) => (
+        <Link to={r.path} key={i}>
+          {r.name}
+        </Link>
+      ))}
     </Container>
   );
 };

@@ -29,9 +29,13 @@ export const Header = styled.header`
   transform: translateX(-50%);
   z-index: 999999;
   &.ggg {
-    background-color: "rgba(35, 35, 35, 0.8)";
-    -webkit-backdrop-filter: blur(12px) saturate(187%);
-    backdrop-filter: blur(12px) saturate(187%);
+    ${responsive(
+      {
+        backgroundColor: "rgba(35, 35, 35, 0.8)",
+        backdropFilter: "blur(12px) saturate(187%)",
+      },
+      620
+    )}
   }
   /* glassmorphism */
   &.glassmorphism {
@@ -39,6 +43,7 @@ export const Header = styled.header`
     -webkit-backdrop-filter: blur(12px) saturate(187%);
     backdrop-filter: blur(12px) saturate(187%);
   }
+  ${responsive({ height: 60 }, 620)}
 `;
 
 export const Toggle = styled.div`

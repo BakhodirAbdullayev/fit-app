@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import HomeSectionTitle from "../HomeSectionTitle";
 import { AiFillStar } from "react-icons/ai";
 import { MdLocationOn } from "react-icons/md";
@@ -12,11 +12,8 @@ import {
   Name,
   Rating,
 } from "./HomeClubs.styles";
-
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Scrollbar, A11y, EffectCube } from "swiper";
-import "swiper/swiper-bundle.min.css";
-
+import { Splide, SplideSlide, Options } from "@splidejs/react-splide";
+import "@splidejs/react-splide/css";
 const arr = [
   {
     name: "Big Bro Tennis club",
@@ -56,18 +53,19 @@ const arr = [
 ];
 
 const HomeClubs = () => {
-  const [slidesPerView, setSlidesPerView] = useState<number>(3.2);
+  const [slidesPerView, setSlidesPerView] = useState<number>(3);
 
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth > 1024) {
-        setSlidesPerView(3.2);
+        setSlidesPerView(3);
         console.log("hhhh");
       } else if (window.innerWidth > 850) {
         setSlidesPerView(2.7);
-      } else if (window.innerWidth > 600) {
+      } else if (window.innerWidth > 670) {
         setSlidesPerView(2.1);
-        console.log("jjjj");
+      } else if (window.innerWidth > 500) {
+        setSlidesPerView(1.5);
       } else setSlidesPerView(1);
     };
 
@@ -79,6 +77,18 @@ const HomeClubs = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+  const sliderOptions: Options = {
+    type: "loop",
+    autoplay: true,
+    interval: 3000,
+    pauseOnHover: !true,
+    arrows: false,
+    pagination: false,
+    drag: "free",
+    focus: "center",
+    perPage: slidesPerView,
+    gap: 20,
+  };
   return (
     <Container>
       <HomeSectionTitle
@@ -90,20 +100,10 @@ const HomeClubs = () => {
         link={"/club-id"}
       />
       {/* <div style={{ marginBottom: 25 }}></div> */}
-      <Swiper
-        className="slider"
-        modules={[Navigation, Pagination, Scrollbar, A11y, EffectCube]}
-        spaceBetween={30}
-        slidesPerView={slidesPerView}
-        // pagination={{ clickable: true }}
-        scrollbar={{ draggable: true }}
-        style={{
-          paddingTop: 20,
-        }}
-        autoplay={{ delay: 400, disableOnInteraction: false }}
-      >
+
+      <Splide options={sliderOptions} aria-label="My Favorite Images">
         {arr.map((a, i) => (
-          <SwiperSlide>
+          <SplideSlide key={i}>
             <Card>
               <CardImage>
                 <img src={a.image} alt={a.name} />
@@ -124,9 +124,9 @@ const HomeClubs = () => {
                 </Locat>
               </CardBody>
             </Card>
-          </SwiperSlide>
+          </SplideSlide>
         ))}
-      </Swiper>
+      </Splide>
     </Container>
   );
 };

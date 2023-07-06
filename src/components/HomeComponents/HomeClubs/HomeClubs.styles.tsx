@@ -1,27 +1,21 @@
 import styled from "styled-components";
+import { responsive } from "../../../styles/responsive";
 import {
   darkBlack,
   darkLime,
   lightBlack,
   lightGray,
   lightLime,
-} from "../../styles/variables";
+} from "../../../styles/variables";
 
 export const Container = styled.div`
   width: 100%;
   padding: 20px;
   margin-top: 50px;
-  .swiper-scrollbar-horizontal {
-    transform: translateY(20px);
-    display: none;
-  }
-  .slider:hover {
-    cursor: grab;
-  }
 `;
 
 export const Card = styled.div`
-  max-width: 400px;
+  max-width: 600px;
   overflow: hidden;
   border-radius: 10px;
   margin: 10px;

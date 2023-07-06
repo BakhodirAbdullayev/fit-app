@@ -14,7 +14,6 @@ export const Container = styled.div<NavbarProps>`
   align-items: center;
   gap: 30px;
   left: ${(p) => (p.toggle ? "0" : "-100%")};
-  transition: 0.4s;
   &.glassmorphism2 {
     ${responsive(
       {
@@ -32,10 +31,11 @@ export const Container = styled.div<NavbarProps>`
   )};
   ${responsive(
     {
+      transition: "0.4s",
       paddingTop: 30,
       position: "fixed",
       zIndex: 1000,
-      top: 80,
+      top: 60,
       width: "100%",
       height: "100vh",
       flexDirection: "column",
